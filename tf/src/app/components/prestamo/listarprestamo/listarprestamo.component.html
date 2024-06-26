@@ -1,0 +1,142 @@
+<app-administrar></app-administrar>
+
+<form [formGroup]="form" (submit)="filtrar()" class="example-form">
+
+    <div>
+        <mat-form-field class="example-full-width">
+            <mat-label>DNI del cliente</mat-label>
+            <input matInput placeholder="dni" formControlName="dni" />
+            <mat-error *ngIf="form.get('dni')?.hasError('required')">dni del cliente</mat-error>
+        </mat-form-field>
+    </div>
+    
+   <div>
+    <div class="button-container1">
+        <button class="btnbuscar">Buscar</button>
+    </div>
+   </div>
+</form>
+
+
+
+<div class="container" >
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <!-- Position Column -->
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="c2">
+            <th mat-header-cell *matHeaderCellDef>monto prèstamo</th>
+            <td mat-cell *matCellDef="let element">{{ element.montoPrestamo.toFixed(2) }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="c3">
+            <th mat-header-cell *matHeaderCellDef>Dìa de pago</th>
+            <td mat-cell *matCellDef="let element">
+                <p *ngIf="iscuota(element.tipoCredito)">{{ element.diaPagoMensual}}</p>
+                <p *ngIf="ispagofuturo(element.tipoCredito)">-</p>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="c4">
+            <th mat-header-cell *matHeaderCellDef>Tipo crèdito</th>
+            <td mat-cell *matCellDef="let element">
+                {{ element.tipoCredito }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="c5">
+            <th mat-header-cell *matHeaderCellDef>tasa</th>
+            <td mat-cell *matCellDef="let element">
+                {{ (element.tasa*100).toFixed(2)}}%
+            </td>
+        </ng-container> 
+
+        <ng-container matColumnDef="c6">
+            <th mat-header-cell *matHeaderCellDef>tipoTasa</th>
+            <td mat-cell *matCellDef="let element">
+                {{ element.tipoTasa }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="c7">
+            <th mat-header-cell *matHeaderCellDef>periodoGracia</th>
+            <td mat-cell *matCellDef="let element">
+                <p *ngIf="iscuota(element.tipoCredito)">{{ element.periodoGracia}}</p>
+                <p *ngIf="ispagofuturo(element.tipoCredito)">-</p>
+            </td>
+        </ng-container>
+
+ 
+
+<ng-container matColumnDef="c9">
+    <th mat-header-cell *matHeaderCellDef>fecha registro</th>
+    <td mat-cell *matCellDef="let element">
+        {{ element.fecha_inicial }}
+    </td>
+</ng-container>
+
+<ng-container matColumnDef="c10">
+    <th mat-header-cell *matHeaderCellDef>fecha vencimiento</th>
+    <td mat-cell *matCellDef="let element">
+        {{ element.fecha_vencimiento }}
+    </td>
+</ng-container>
+
+<ng-container matColumnDef="c11">
+    <th mat-header-cell *matHeaderCellDef>monto final</th>
+    <td mat-cell *matCellDef="let element" >
+        {{ element.monto_final.toFixed(2) }}
+    </td>
+</ng-container>
+
+<ng-container matColumnDef="c12">
+    <th mat-header-cell *matHeaderCellDef>cuota</th>
+    <td mat-cell *matCellDef="let element">
+        <p *ngIf="iscuota(element.tipoCredito)">{{ element.cuota.toFixed(2)}}</p>
+        <p *ngIf="ispagofuturo(element.tipoCredito)">-</p>
+    </td>
+</ng-container>
+
+<ng-container matColumnDef="c13">
+    <th mat-header-cell *matHeaderCellDef>saldo</th>
+    <td mat-cell *matCellDef="let element">
+        <p *ngIf="iscuota(element.tipoCredito)">{{ element.saldo.toFixed(2)}}</p>
+        <p *ngIf="ispagofuturo(element.tipoCredito)">-</p>
+    </td>
+</ng-container>
+
+<ng-container matColumnDef="c14">
+    <th mat-header-cell *matHeaderCellDef>estado</th>
+    <td mat-cell *matCellDef="let element">
+        <button class="btn" *ngIf="pagado(element.estadoPrestamo)" (click)="pagar(element)">
+            pagar
+        </button>
+        <p *ngIf="ispagado(element.estadoPrestamo)">
+            pagado
+        </p>
+    </td>
+</ng-container>
+
+<!----
+<ng-container matColumnDef="eliminar">
+    <th mat-header-cell *matHeaderCellDef>Eliminar</th>
+    <td mat-cell *matCellDef="let element">
+        <button class="btn" (click)="eliminar(element.idPrestamo)">
+            <mat-icon>delete_sweep</mat-icon>
+        </button>
+    </td>
+</ng-container>
+-->
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+    <br>
+
+    <div class="button-container">
+        <button class="btn" (click)="exportPdf()">Importar</button>
+    </div>
+</div>
+
+<!----<div class="container" id="content" #content></div>-->

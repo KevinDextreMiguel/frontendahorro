@@ -1,0 +1,95 @@
+<app-administrar></app-administrar>
+<h1>Registrar Prèstamo</h1>
+<div class="container" style="text-align: center">
+    
+    <form [formGroup]="form" (submit)="aceptar()" class="example-form">
+
+        <div class="pedir">
+        <mat-form-field class="example-full-width">
+            <mat-label>cliente</mat-label>
+            <mat-select formControlName="c1">
+                <mat-option *ngFor="let c of listaCliente" [value]="c.idCliente">
+                    {{ c.dniCliente }}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.get('c1')?.hasError('required')">El campo es obligatoria.</mat-error>
+        </mat-form-field>
+        
+        <mat-form-field class="example-full-width">
+            <mat-label>monto</mat-label>
+            <input matInput placeholder="monto" formControlName="c2" />
+            <mat-error *ngIf="form.get('c2')?.hasError('required')">El campo es obligatorio.</mat-error>
+        </mat-form-field>
+        </div>
+    <br />
+<div class="pedir">
+    <mat-form-field class="example-full-width">
+        <mat-label>Tipo de credito</mat-label>
+        <mat-select formControlName="c4">
+            <mat-option *ngFor="let m of tipoTransaccion" [value]="m.value">
+                {{ m.viewValue }}
+            </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('c4')?.hasError('required')">El campo es obligatorio.</mat-error>
+    </mat-form-field>
+    
+    <mat-form-field class="example-full-width">
+        <mat-label>tasa</mat-label>
+    
+        <input matInput placeholder="tasa" formControlName="c5" />
+        <mat-error *ngIf="form.get('c5')?.hasError('required')">El campo es obligatorio.</mat-error>
+    </mat-form-field>
+</div>
+<br>
+<div class="pedir">
+    <mat-form-field class="example-full-width">
+        <mat-label>tipo de tasa</mat-label>
+        <mat-select formControlName="c6">
+            <mat-option *ngFor="let m of tasas" [value]="m.value">
+                {{ m.viewValue }}
+            </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('c6')?.hasError('required')">El campo es obligatorio.</mat-error>
+    </mat-form-field>
+    
+    <mat-form-field appearance="fill" class="example-full-width" *ngIf="esPagoFuturo()">
+        <input matInput placeholder="fecha de vencimiento" [matDatepicker]="picker" formControlName="c7" />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="form.get('c7')?.hasError('required')">La fecha es obligatoria.</mat-error>
+    </mat-form-field>
+</div>
+<br>
+    <div class="pedir">
+        <mat-form-field class="example-full-width" *ngIf="esCuota()">
+            <mat-label>Cantidad de Cuotas</mat-label>
+            <input matInput placeholder="cantidad cuota" formControlName="c8" />
+            <mat-error *ngIf="form.get('c8')?.hasError('required')">El campo es obligatorio.</mat-error>
+        </mat-form-field>
+        
+        <mat-form-field class="example-full-width" *ngIf="esCuota()">
+            <mat-label>dia pago mensual</mat-label>
+            <input matInput placeholder="dia pago" formControlName="c3" />
+            <mat-error *ngIf="form.get('c3')?.hasError('required')">El campo es obligatorio.</mat-error>
+        </mat-form-field>
+    </div>
+<br>
+    <mat-form-field class="example-full-width" *ngIf="esCuota()">
+        <mat-label>Periodo de Gracia</mat-label>
+        <input matInput placeholder="periodo de gracia" formControlName="c10" />
+        <mat-error *ngIf="form.get('c10')?.hasError('required')">El campo es obligatorio.</mat-error>
+    </mat-form-field>
+
+
+    <div class="button-container">
+        <button class="btn">Aceptar</button>
+        <button class="btn" routerLink="/bienvenida">Cancelar</button>
+    </div>
+    </form>
+</div>
+
+
+
+
+

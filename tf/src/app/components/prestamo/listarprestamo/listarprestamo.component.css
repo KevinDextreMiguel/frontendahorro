@@ -1,0 +1,48 @@
+
+.container{
+    padding-left: 17%;
+    width: 100%;
+}
+
+
+form{
+    display: flex;
+    gap: 10px; /* Espacio entre los botones */
+    padding-top: 5%;
+    padding-left: 45%;
+    padding-bottom: 5%;
+}
+
+.button-container1 {
+    padding-left: 3%;
+   display: flex; /* Usar flexbox para centrar los botones */
+   justify-content: center; /* Centrar los botones horizontalmente */
+   gap: 10px; /* Espacio entre los botones */
+   margin-top: 20px; /* Añadir un poco de espacio superior si es necesario */
+}
+
+.btnbuscar{
+   padding: 10px 10px;  
+   background-color: orange; /* Cambia el color aquí */
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+   transition: background-color 0.3s, transform 0.2s;
+}
+
+
+.button-container {
+   display: flex; /* Usar flexbox para centrar los botones */
+   justify-content: center; /* Centrar los botones horizontalmente */
+   gap: 10px; /* Espacio entre los botones */
+   margin-top: 20px; /* Añadir un poco de espacio superior si es necesario */
+}
+
+.btn {
+   padding: 10px 20px;  
+   background-color: orange; /* Cambia el color aquí */
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+   transition: background-color 0.3s, transform 0.2s;
+}

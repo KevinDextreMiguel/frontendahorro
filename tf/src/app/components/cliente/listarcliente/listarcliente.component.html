@@ -1,0 +1,61 @@
+<app-administrar></app-administrar>
+
+
+<div class="container">
+    <div class="title-container">
+        <h1 class="title">Clientes del Banco MiCredito</h1>
+    </div>
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="nombreCliente">
+            <th mat-header-cell *matHeaderCellDef>Nombre</th>
+            <td mat-cell *matCellDef="let element">{{ element.nombreCliente }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="dniCliente">
+            <th mat-header-cell *matHeaderCellDef>DNI</th>
+            <td mat-cell *matCellDef="let element">
+                {{ element.dniCliente }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="direccionCliente">
+            <th mat-header-cell *matHeaderCellDef>Direccion</th>
+            <td mat-cell *matCellDef="let element">
+                {{ element.direccionCliente }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="limiteCredito">
+            <th mat-header-cell *matHeaderCellDef>Lìmite de Crèdito</th>
+            <td mat-cell *matCellDef="let element">
+                {{ element.limiteCredito }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="accion01">
+            <th mat-header-cell *matHeaderCellDef>Editar</th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-raised-button color="warn" [routerLink]="['/editarcliente', element.idCliente]">
+                    <mat-icon>edit</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="accion02">
+            <th mat-header-cell *matHeaderCellDef>Eliminar</th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-raised-button color="warn" (click)="eliminar(element.idCliente)">
+                    <mat-icon>delete_sweep</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+    <br>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+</div>
+
+

@@ -1,0 +1,38 @@
+.container{
+padding-left: 40%;
+}
+
+
+.title-container {
+    text-align: center;
+}
+  
+.title{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 2em;
+    color: #333;
+}
+
+mat-form-field {
+    width: 60%;
+}
+
+
+.button-container {
+    display: flex; /* Usar flexbox para centrar los botones */
+    padding-left: 5%;
+    gap: 50px; /* Espacio entre los botones */
+    margin-top: 20px; /* Añadir un poco de espacio superior si es necesario */
+}
+
+.btn {
+    padding: 10px 20px;
+    color: black;
+    background-color:orange; /* Cambia el color aquí */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+  

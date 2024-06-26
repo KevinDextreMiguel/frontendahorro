@@ -1,0 +1,36 @@
+<div class="title-container">
+    <h2 class="title">Registro de Insumos</h2>
+</div>
+<div class="container" style="text-align: center">
+    <form [formGroup]="form" (submit)="aceptar()" class="example-form">
+        <mat-form-field class="example-full-width">
+            <mat-label>cliente</mat-label>
+            <mat-select formControlName="c1">
+                <mat-option *ngFor="let c of listaCliente" [value]="c.idCliente">
+                    {{ c.dniCliente }}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.get('c1')?.hasError('required')">El campo es obligatoria.</mat-error>
+        </mat-form-field>
+
+
+
+        <br />
+        <mat-form-field class="example-full-width">
+            <mat-label>saldo actual</mat-label>
+            <input matInput placeholder="saldo actual" formControlName="c2" />
+            <mat-error *ngIf="form.get('c2')?.hasError('required')">El campo es obligatorio.</mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+            <mat-label>numero cuenta</mat-label>
+            <input matInput placeholder="numero cuenta" formControlName="c3" />
+            <mat-error *ngIf="form.get('c3')?.hasError('required')">El campo es obligatorio.</mat-error>
+        </mat-form-field>
+        <br />
+        <button mat-raised-button color="primary">Aceptar</button>
+        <button mat-raised-button color="warn" routerLink="/insumos">
+            Cancelar
+        </button>
+    </form>
+</div>

@@ -1,0 +1,43 @@
+<!-- Icon Link -->
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<body>
+    <div class="container">
+        <div class="sidenav">
+            <div class="logo">
+                <h2>MI CREDITO</h2>
+            </div>
+            <div class="icon_items">
+                <ul>
+                    <li>
+                        <i class="bx bxs-user-circle" routerLink="/listarcliente"></i>
+                        <button mat-button routerLink="/listarcliente">Mis Clientes</button>
+                    </li>
+
+                    <li>
+                        <button mat-button routerLink="/registrarcliente"><mat-icon routerLink="/registrarcliente">add_circle</mat-icon>
+                            Añadir cliente</button>
+
+                    </li>
+                    <li>
+                        <i class="bx bxs-dollar-circle"></i>
+                        <button mat-button routerLink="/listarprestamo">Prestamos</button>
+                    </li>
+                    <li>
+                        <i class="bx bxs-buildings" routerLink="/registrarprestamo"></i>
+                        <button mat-button routerLink="/registrarprestamo">Registrar Prestamo</button>
+                    </li>
+                   
+                    <li>
+                        <i class="bx bx-log-in"></i>                       
+                        <button mat-raised-button routerLink="/iniciosesion">Salir</button>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    <div class="derecha">
+        <h1>inisioSesion</h1>
+    </div>
+</body>

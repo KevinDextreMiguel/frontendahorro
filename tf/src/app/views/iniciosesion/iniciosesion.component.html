@@ -1,0 +1,22 @@
+<app-header></app-header>
+
+<div class="container">
+        <mat-form-field class="componente">
+            <mat-label>user</mat-label>
+            <input matInput placeholder="DNI" [(ngModel)]="userName"/>
+        </mat-form-field>
+<br>
+        <mat-form-field class="componente">
+            <mat-label>Password</mat-label>
+            <input type="password" matInput placeholder="password" [(ngModel)]="password"/>
+        </mat-form-field>
+<br>
+<div class="button">
+        <button mat-raised-button color="primary" (click)="login()">Ingresar</button>
+</div>
+            
+</div>
+
+<app-footer></app-footer>
+
+

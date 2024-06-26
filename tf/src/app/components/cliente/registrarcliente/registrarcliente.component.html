@@ -1,0 +1,52 @@
+<app-administrar></app-administrar>
+    <div class="title-container">
+        <h1 class="title">Registre los datos del cliente</h1>
+    </div>
+<div class="container">
+    <form [formGroup]="form" (submit)="aceptar()" class="example-form">
+
+        <mat-form-field class="ingresardato" *ngIf="edicion">
+            <mat-label>Codigo</mat-label>
+            <input matInput placeholder="Codigo" formControlName="idCliente" />
+        </mat-form-field>
+        <br />
+        <mat-form-field class="ingresardato">
+            <mat-label>Nombre:</mat-label>
+            <input matInput placeholder="nombre de cliente" formControlName="nombreCliente" />
+            <mat-error *ngIf="form.get('nombreCliente')?.hasError('required')">El nombre es obligatorio.</mat-error>
+        </mat-form-field>
+
+        <br />
+<mat-form-field class="ingresardato">
+    <mat-label>DNI:</mat-label>
+    <input matInput placeholder="dni del cliente" formControlName="dniCliente" />
+    <mat-error *ngIf="form.get('dniCliente')?.hasError('required')">El dni es obligatorio.</mat-error>
+</mat-form-field>
+
+
+<br />
+<mat-form-field class="ingresardato">
+    <mat-label>Direccion:</mat-label>
+    <input matInput placeholder="direccion del cliente" formControlName="direccionCliente" />
+    <mat-error *ngIf="form.get('direccionCliente')?.hasError('required')">la direccion es obligatorio.</mat-error>
+</mat-form-field>
+
+
+<br />
+<mat-form-field class="ingresardato">
+    <mat-label>Lìmite crèdito:</mat-label>
+    <input matInput placeholder="ingrese limite de crèdito" formControlName="limiteCredito" />
+    <mat-error *ngIf="form.get('limiteCredito')?.hasError('required')">La Lìmite de crèdito es obligatorio.</mat-error>
+    <mat-error *ngIf="form.get('limiteCredito')?.hasError('min')">El lìmite de crèdito mìnimo es 200.</mat-error>
+    <mat-error *ngIf="form.get('limiteCredito')?.hasError('max')">El lìmite de crèdito màximo es 10000.</mat-error>
+    <mat-error *ngIf="form.get('limiteCredito')?.hasError('pattern')">El valor no es válida.</mat-error>
+</mat-form-field>
+<br />
+
+        <div class="button-container">
+            <button class="btn">Aceptar</button>
+            <button class="btn" routerLink="/bienvenida">Cancelar</button>
+        </div>
+
+    </form>
+</div>

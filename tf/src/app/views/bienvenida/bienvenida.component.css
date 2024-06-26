@@ -1,0 +1,15 @@
+.container{
+    width: 100%;
+    padding-left: 30%;
+}
+
+
+.title{
+    padding-left: 35%;
+    color: black;
+    font-size: 25px;
+}
+
+.imagen{
+    width: 300%;
+}
